@@ -1,96 +1,86 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mzdrodow <mzdrodow@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/04 17:01:34 by mzdrodow          #+#    #+#             */
+/*   Updated: 2025/12/04 18:54:53 by mzdrodow         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-t_node *new_node(int val)
+t_node	*new_node(int val)
 {
-    t_node *new;
+	t_node	*new;
 
-    new = malloc(sizeof(t_node));
-    new->next = NULL;
-    new->val = val;
-    new->index = -1;
-    return (new);
+	new = malloc(sizeof(t_node));
+	new->next = NULL;
+	new->val = val;
+	new->index = -1;
+	return (new);
 }
 
-int stack_len(t_stack *stack)
+int	stack_len(t_stack *stack)
 {
-    int len;
-    t_node *p;
+	int		len;
+	t_node	*p;
 
-    len = 0;
-    p = stack->head;
-    while (p)
-    {
-        len++;
-        p = p->next;
-    }
-    return (len);
+	len = 0;
+	p = stack->head;
+	while (p)
+	{
+		len++;
+		p = p->next;
+	}
+	return (len);
 }
 
-void stack_add_back(t_stack *stack, t_node *new)
+void	stack_add_back(t_stack *stack, t_node *new)
 {
-    t_node *p;
+	t_node	*p;
 
-    p = stack->head;
-    if (p == NULL)
-    {
-        stack->head = new;
-    }
-    else
-    {
-        while (p->next != NULL)
-            p = p->next;
-        p->next = new;
-    }
+	p = stack->head;
+	if (p == NULL)
+	{
+		stack->head = new;
+	}
+	else
+	{
+		while (p->next != NULL)
+			p = p->next;
+		p->next = new;
+	}
 }
 
-t_stack *parse_stack(char **args)
+t_stack	*parse_stack(char **args)
 {
-    t_stack *stack;
-    t_node *node;
-    int i;
+	t_stack	*stack;
+	t_node	*node;
+	int		i;
 
-    i = 0;
-    stack = malloc(sizeof(t_stack));
-    stack->head = NULL;
-    while (args[i])
-    {
-        node = new_node(ft_atoi(args[i]));
-        stack_add_back(stack, node);
-        i++;
-    }
-    return (stack);
+	i = 0;
+	stack = malloc(sizeof(t_stack));
+	stack->head = NULL;
+	while (args[i])
+	{
+		node = new_node(ft_atoi(args[i]));
+		stack_add_back(stack, node);
+		i++;
+	}
+	return (stack);
 }
 
-void stack_indexing(t_stack *stack, int size, int *tab)
+t_node	*get_tail_prev(t_stack *stack)
 {
-    int i;
-    t_node *p;
+	t_node	*p;
 
-    p = stack->head;
-    bubble_sort(tab, size);
-    while (p)
-    {
-        i = 0;
-        while (i < size)
-        {
-            if (tab[i] == p->val)
-                p->index = i;
-            i++;
-        }
-
-        p = p->next;
-    }
-    free(tab);
-}
-
-t_node *get_tail_prev(t_stack *stack)
-{
-    t_node *p;
-
-    p = stack->head;
-    while (p->next->next != NULL)
-        p = p->next;
-    return (p);
+	p = stack->head;
+	while (p->next->next != NULL)
+		p = p->next;
+	return (p);
 }
 
 // void stack_tests(t_data *stacks) {

@@ -1,28 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_stacks.c                                      :+:      :+:    :+:   */
+/*   operations_b.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzdrodow <mzdrodow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/04 17:01:11 by mzdrodow          #+#    #+#             */
-/*   Updated: 2025/12/04 18:55:50 by mzdrodow         ###   ########.fr       */
+/*   Created: 2025/12/04 18:56:00 by mzdrodow          #+#    #+#             */
+/*   Updated: 2025/12/04 18:56:00 by mzdrodow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_stack(t_stack *stack)
+void	rb(t_stack *stack)
 {
-	t_node	*p;
-	t_node	*p2;
+	shift_up(stack);
+	ft_printf("rb\n");
+}
 
-	p = stack->head;
-	while (p != NULL)
-	{
-		p2 = p;
-		p = p->next;
-		free(p2);
-	}
-	free(stack);
+void	rr(t_stack *a, t_stack *b)
+{
+	shift_up(a);
+	shift_up(b);
+	ft_printf("rr\n");
+}
+
+void	rra(t_stack *stack)
+{
+	shift_down(stack);
+	ft_printf("rra\n");
+}
+
+void	rrb(t_stack *stack)
+{
+	shift_down(stack);
+	ft_printf("rrb\n");
+}
+
+void	rrr(t_stack *a, t_stack *b)
+{
+	shift_down(a);
+	shift_down(b);
+	ft_printf("rrr\n");
 }
