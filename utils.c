@@ -1,6 +1,7 @@
 #include "push_swap.h"
 
-void int_swap(int *a, int *b) {
+void int_swap(int *a, int *b)
+{
     int temp;
 
     temp = *a;
@@ -8,27 +9,28 @@ void int_swap(int *a, int *b) {
     *b = temp;
 }
 
-void	bubble_sort(int *tab, int size)
+void bubble_sort(int *tab, int size)
 {
-	int	step;
-	int	i;
-	int	temp;
+    int step;
+    int i;
+    int temp;
 
-	step = 0;
-	while (step < size - 1)
-	{
-		i = 0;
-		while (i < size - step - 1)
-		{
-			if (tab[i] > tab[i + 1])
+    step = 0;
+    while (step < size - 1)
+    {
+        i = 0;
+        while (i < size - step - 1)
+        {
+            if (tab[i] > tab[i + 1])
                 int_swap(&tab[i], &tab[i + 1]);
-			i++;
-		}
-		step++;
-	}
+            i++;
+        }
+        step++;
+    }
 }
 
-int *char_tab_to_int_tab(char **args) {
+int *char_tab_to_int_tab(char **args)
+{
     int size;
     int i;
     int *tab;
@@ -44,4 +46,14 @@ int *char_tab_to_int_tab(char **args) {
         i++;
     }
     return (tab);
+}
+
+void free_strarr(char **arr)
+{
+    int i;
+
+    i = 0;
+    while (arr[i])
+        free(arr[i++]);
+    free(arr);
 }

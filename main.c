@@ -1,6 +1,7 @@
 #include "push_swap.h"
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
     t_data *stacks;
     char **args;
 
@@ -10,15 +11,19 @@ int main(int argc, char **argv) {
     stacks->b = malloc(sizeof(t_stack));
     stacks->b->head = NULL;
     stack_indexing(stacks->a, stack_len(stacks->a), char_tab_to_int_tab(args));
-    stack_tests(stacks);
-    push(stacks->a, stacks->b);
-    push(stacks->a, stacks->b);
-    swap(stacks->b);
-    swap(stacks->a);
-    shift_up(stacks->a);
-    shift_down(stacks->a);
-    shift_down(stacks->b);
-    shift_up(stacks->b);
-    ft_printf("\nafter operations\n\n");
-    stack_tests(stacks);
+    free_strarr(args);
+    if (!is_sorted(stacks->a))
+    {
+        if (stack_len(stacks->a) == 2)
+            sa(stacks->a);
+        else if (stack_len(stacks->a) == 3)
+            sort_3(stacks->a);
+        else if (stack_len(stacks->a) <= 5)
+            sort_4_5(stacks->a, stacks->b);
+        else
+            radix_sort(stacks->a, stacks->b);
+    }
+    free_stack(stacks->a);
+    free_stack(stacks->b);
+    free(stacks);
 }
