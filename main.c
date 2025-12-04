@@ -10,8 +10,9 @@ int main(int argc, char **argv)
     stacks->a = parse_stack(args);
     stacks->b = malloc(sizeof(t_stack));
     stacks->b->head = NULL;
+    if (validate_input(args) != 0)
+        return (free_all(args, stacks), ft_printf("Error\nInvalid input."), 1);
     stack_indexing(stacks->a, stack_len(stacks->a), char_tab_to_int_tab(args));
-    free_strarr(args);
     if (!is_sorted(stacks->a))
     {
         if (stack_len(stacks->a) == 2)
@@ -23,7 +24,5 @@ int main(int argc, char **argv)
         else
             radix_sort(stacks->a, stacks->b);
     }
-    free_stack(stacks->a);
-    free_stack(stacks->b);
-    free(stacks);
+    return (free_all(args, stacks), 0);
 }

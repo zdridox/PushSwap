@@ -57,3 +57,11 @@ void free_strarr(char **arr)
         free(arr[i++]);
     free(arr);
 }
+
+void free_all(char **args, t_data *stacks)
+{
+    free_strarr(args);
+    free_stack(stacks->a);
+    free_stack(stacks->b);
+    free(stacks);
+}

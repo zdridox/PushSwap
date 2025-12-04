@@ -37,6 +37,8 @@ void shift_up(t_stack *stack);
 void shift_down(t_stack *stack);
 void free_strarr(char **arr);
 void free_stack(t_stack *stack);
+int validate_input(char **args);
+void free_all(char **args, t_data *stacks);
 
 void sa(t_stack *stack);
 void sb(t_stack *stack);
@@ -49,7 +51,6 @@ void rr(t_stack *a, t_stack *b);
 void rra(t_stack *stack);
 void rrb(t_stack *stack);
 void rrr(t_stack *a, t_stack *b);
-
 void sort_3(t_stack *a);
 void sort_4_5(t_stack *a, t_stack *b);
 void radix_sort(t_stack *a, t_stack *b);
@@ -57,4 +58,5 @@ int get_min(t_stack *stack);
 int get_max(t_stack *stack);
 int find_position(t_stack *a, int value);
 int is_sorted(t_stack *stack);
+
 #endif
