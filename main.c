@@ -6,7 +6,7 @@
 /*   By: mzdrodow <mzdrodow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 17:01:19 by mzdrodow          #+#    #+#             */
-/*   Updated: 2025/12/04 17:01:19 by mzdrodow         ###   ########.fr       */
+/*   Updated: 2025/12/04 19:03:44 by mzdrodow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	main(int argc, char **argv)
 	t_data	*stacks;
 	char	**args;
 
+	if(argc != 2)
+		return(ft_printf("please provide input."), 1);
 	stacks = malloc(sizeof(t_data));
 	args = ft_split(argv[1], ' ');
 	stacks->a = parse_stack(args);

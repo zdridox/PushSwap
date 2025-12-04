@@ -6,7 +6,7 @@
 /*   By: mzdrodow <mzdrodow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 17:01:37 by mzdrodow          #+#    #+#             */
-/*   Updated: 2025/12/04 18:57:47 by mzdrodow         ###   ########.fr       */
+/*   Updated: 2025/12/04 19:10:08 by mzdrodow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	bubble_sort(int *tab, int size)
 {
 	int	step;
 	int	i;
-	int	temp;
 
 	step = 0;
 	while (step < size - 1)
